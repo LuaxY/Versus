@@ -1,0 +1,155 @@
+/* --------------------- */
+/* Home page stylesheets */
+/* --------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    background-color: #ecf0f1;
+}
+
+.header, .marketing, .footer {
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+.header {
+    padding-bottom: 1rem;
+    border-bottom: .05rem solid #e5e5e5;
+}
+
+.header h3 {
+    text-align: center;
+}
+
+.logo {
+    display: inline;
+    float: left;
+}
+
+.logo2 {
+    text-align: center;
+}
+
+.btn.btn-danger.choose {
+    margin-top: 10px;
+}
+
+.footer {
+    padding-top: 1.5rem;
+    color: #777;
+    border-top: .05rem solid #e5e5e5;
+}
+
+.container-narrow>hr {
+    margin: 2rem 0;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: #bdc3c7;
+    border-bottom: .05rem solid #e5e5e5;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.8);
+    border-radius: 0px !important;
+}
+
+.jumbotron .btn {
+    padding: .75rem 1.5rem;
+    font-size: 1.5rem;
+}
+
+.jumbotron img {
+    max-width: 100%;
+}
+
+.jumbotron img.vs {
+    max-width: 100%;
+}
+
+.jumbotron img.vs.xs {
+    z-index: 1;
+    position: relative;
+    top: 50px;
+}
+
+.marketing {
+    margin: 3rem 0;
+}
+
+.marketing p+h4 {
+    margin-top: 1.5rem;
+}
+
+.img-thumbnail {
+    width: 200px !important;
+    height: 200px !important;
+}
+
+/* --------------- */
+/* Animation Image */
+/* --------------- */
+
+
+/* --------------------- */
+/* Responsive properties */
+/* --------------------- */
+
+@media screen and (min-width: 48em) {
+    .container {
+        max-width: 88rem;
+    }
+    .header, .marketing, .footer {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .header {
+        margin-bottom: 2rem;
+    }
+    .jumbotron {
+        border-bottom: 0;
+    }
+    .jumbotron img {
+        max-width: 100%;
+    }
+    .jumbotron img.vs {
+        max-width: 100%;
+    }
+    .col-xs-pull-3 {
+        right: 0 !important;
+    }
+}
+
+@media screen and (max-width: 48em) {
+    .logo2 {
+        max-width: 50px;
+    }
+    .absolute {
+        z-index: 1;
+        position: absolute;
+        margin-top: 10px;
+    }
+    .jumbotron img.vs {
+        max-width: 70%;
+    }
+}
+
+@media screen and (max-width: 27em) {
+    .jumbotron h3 {
+        font-size: 1.5em;
+    }
+    .jumbotron h4 {
+        font-size: 1em;
+    }
+    .absolute {
+        z-index: 1;
+        position: absolute;
+        margin-top: 10px;
+    }
+    .jumbotron img.vs {
+        max-width: 70%;
+    }
+}
