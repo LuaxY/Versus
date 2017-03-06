@@ -53,7 +53,7 @@
                         </table>
                     </div>
                 </div>
-                <h3>Sexe</h3>
+                <h3>Sexes</h3>
                 <label><input type="checkbox" v-model="selectAllSexes"> Tout cocher</label>
                 <table class="table table-bordered table-striped">
                     <tr v-for="sex in sexes">
