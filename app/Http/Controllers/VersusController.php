@@ -13,7 +13,7 @@ class VersusController extends Controller
 
         if (Student::picker($students))
         {
-            return view('versus', ['students' => $students]);
+            return view('versus', ['voteId' => 0, 'students' => $students]);
         }
 
         die(1);
