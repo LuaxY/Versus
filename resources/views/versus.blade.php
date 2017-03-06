@@ -31,7 +31,7 @@
             <div class="header clearfix">
                 <h3 class="text-muted"><img src="{{ URL::asset('imgs/header.png') }}" alt="Logo" class="" width="50"/> Versus</h3>
             </div>
-            <div class="jumbotron">
+            <div class="jumbotron vote">
                 <div class="row">
                     @include('student', ['id' => 0, 'student' => $students[0]])
                     <div class="col-xs-6 col-xs-pull-3 col-sm-4 col-md-4 absolute">
@@ -40,10 +40,27 @@
                     @include('student', ['id' => 1, 'student' => $students[1]])
                 </div>
             </div>
-            <div class="jumbotron">
+            <div class="jumbotron filters">
+                <h3>Promotions</h3>
+                <label><input type="checkbox" v-model="selectAllPromotions"> Tout cocher</label>
                 <div class="row">
-                    Filtres
+                    <div class="col-xs-12 col-sm-4" v-for="promotionsGroup in promotions">
+                        <table class="table table-bordered table-striped">
+                            <tr v-for="promotion in promotionsGroup">
+                                <td><input type="checkbox" v-model="selectedPromotions" :id="promotion" :value="promotion"></td>
+                                <td><label :for="promotion">@{{ promotion }}</label></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
+                <h3>Sexe</h3>
+                <label><input type="checkbox" v-model="selectAllSexes"> Tout cocher</label>
+                <table class="table table-bordered table-striped">
+                    <tr v-for="sex in sexes">
+                        <td><input type="checkbox" v-model="selectedSex" :id="sex" :value="sex"></td>
+                        <td><label :for="sex">@{{ sex }}</label></td>
+                    </tr>
+                </table>
             </div>
             <footer class="footer">
                 <p></p>
