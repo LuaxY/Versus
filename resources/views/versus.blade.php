@@ -42,6 +42,14 @@
                 </div>
             </div>
             <div class="jumbotron filters">
+                <h3>Sexes</h3>
+                <label><input type="checkbox" v-model="selectAllSexes"> Tout cocher</label>
+                <table class="table table-bordered table-striped">
+                    <tr v-for="sex in sexes">
+                        <td><input type="checkbox" v-model="selectedSex" :id="sex" :value="sex"></td>
+                        <td><label :for="sex">@{{ sex }}</label></td>
+                    </tr>
+                </table>
                 <h3>Promotions</h3>
                 <label><input type="checkbox" v-model="selectAllPromotions"> Tout cocher</label>
                 <div class="row">
@@ -54,14 +62,6 @@
                         </table>
                     </div>
                 </div>
-                <h3>Sexes</h3>
-                <label><input type="checkbox" v-model="selectAllSexes"> Tout cocher</label>
-                <table class="table table-bordered table-striped">
-                    <tr v-for="sex in sexes">
-                        <td><input type="checkbox" v-model="selectedSex" :id="sex" :value="sex"></td>
-                        <td><label :for="sex">@{{ sex }}</label></td>
-                    </tr>
-                </table>
             </div>
             <footer class="footer">
                 <p></p>

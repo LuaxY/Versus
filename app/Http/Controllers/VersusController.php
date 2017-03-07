@@ -49,14 +49,16 @@ class VersusController extends Controller
             ]);
         }
 
+        $filtersFormated = $filters['promotions'] . "|" . $filters['sexes'];
+
         // No vote ready, create new one
-        if ($this->picker($students))
+        if ($this->picker($students, $filtersFormated))
         {
             $vote = new Vote;
             $vote->uid      = $request->input('uid');
             $vote->student1 = $students[0]->id;
             $vote->student2 = $students[1]->id;
-            $vote->filters  = $filters['promotions'] . "|" . $filters['sexes'];
+            $vote->filters  = $filtersFormated;
             $vote->save();
 
             return response()->json([
@@ -73,8 +75,6 @@ class VersusController extends Controller
 
     public function vote(Request $request)
     {
-        // TODO use validator
-
         $validator = Validator::make($request->all(), [
             'uid'  => 'required|alpha_num',
             'vid'  => 'required|integer',
@@ -119,17 +119,18 @@ class VersusController extends Controller
         ]);
     }
 
-    public function picker(&$students)
+    private function picker(&$students, $filtersFormated)
     {
         $try = 0;
         $found = false;
 
         while ($try < 5)
         {
+            list($promotions, $sexes) = $this->filters($filtersFormated);
+
             // Pick 2 random students
-            // TODO: add filters
-            $student1 = Student::inRandomOrder()->first();
-            $student2 = Student::inRandomOrder()->first();
+            $student1 = Student::whereIn('promotion', $promotions)->whereIn('sex', $sexes)->inRandomOrder()->first();
+            $student2 = Student::whereIn('promotion', $promotions)->whereIn('sex', $sexes)->inRandomOrder()->first();
 
             if ($student1->id > $student2->id)
             {
@@ -166,5 +167,41 @@ class VersusController extends Controller
         if ($similarVote) return false;
 
         return true;
+    }
+
+    private function filters($filters)
+    {
+        list($promotionsFilter, $sexesFilters) = explode('|', $filters);
+
+        $promotionList = [
+            'Infosup', 'Ingésup B1', 'Ingésup B2', 'Ingésup B3', 'Ingésup M1', 'Ingésup M2',
+            'ESSCA B1', 'ESSCA B2', 'ESSCA B3', 'ISEE M1', 'ISEE M2',
+            'MANAA', 'Limart B2', 'Limart B3',
+            'Anciens',
+        ];
+
+        $sexesList = ['M', 'F'];
+
+        $promotions = [];
+
+        for ($i = 0; $i < strlen($promotionsFilter); $i++)
+        {
+            if ($promotionsFilter[$i] == '1')
+            {
+                $promotions[] = $promotionList[$i];
+            }
+        }
+
+        $sexes = [];
+
+        for ($i = 0; $i < strlen($sexesFilters); $i++)
+        {
+            if ($sexesFilters[$i] == '1')
+            {
+                $sexes[] = $sexesList[$i];
+            }
+        }
+
+        return [$promotions, $sexes];
     }
 }

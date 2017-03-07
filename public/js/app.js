@@ -10,7 +10,7 @@ $( document ).ready(function() {
                 ['Infosup', 'Ingésup B1', 'Ingésup B2', 'Ingésup B3', 'Ingésup M1', 'Ingésup M2'],
                 ['ESSCA B1', 'ESSCA B2', 'ESSCA B3', 'ISEE M1', 'ISEE M2'],
                 ['MANAA', 'Limart B2', 'Limart B3'],
-                [/*'Anciens', 'Intervenants', 'Admin'*/],
+                ['Anciens'],
             ],
             sexes: ['Homme', 'Femme'],
             selectedPromotions: [],
