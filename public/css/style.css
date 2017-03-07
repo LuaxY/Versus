@@ -121,6 +121,14 @@ body {
     margin: 25px 0;
 }
 
+.table td {
+    vertical-align: middle;
+}
+
+.table th.centered, .table td.centered {
+    text-align: center;
+}
+
 /* --------------- */
 /* Animation Image */
 /* --------------- */

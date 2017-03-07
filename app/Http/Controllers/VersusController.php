@@ -16,7 +16,7 @@ class VersusController extends Controller
 
     public function ladder()
     {
-        $students = Student::all();
+        $students = Student::orderBy('score', 'DESC')->get();
 
         return view('ladder', ['students' => $students]);
     }
