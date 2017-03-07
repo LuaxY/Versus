@@ -66,7 +66,7 @@
                             <td>
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" v-model="selectedSex" :id="sex" :value="sex"> @{{ sex }}
+                                        <input type="checkbox" v-model="selectedSex" :id="sex" :value="sex" v-on:change="loadStudents"> @{{ sex }}
                                     </label>
                                 </div>
                             </td>
@@ -81,7 +81,7 @@
                                     <td>
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" v-model="selectedPromotions" :id="promotion" :value="promotion"> @{{ promotion }}
+                                                <input type="checkbox" v-model="selectedPromotions" :id="promotion" :value="promotion" v-on:change="loadStudents"> @{{ promotion }}
                                             </label>
                                         </div>
                                     </td>

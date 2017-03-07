@@ -104,6 +104,7 @@ $( document ).ready(function() {
                     }
 
                     this.selectedPromotions = selected;
+                    this.loadStudents();
                 }
             },
             selectAllSexes: {
@@ -120,6 +121,7 @@ $( document ).ready(function() {
                     }
 
                     this.selectedSex = selected;
+                    this.loadStudents();
                 }
             },
         },

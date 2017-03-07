@@ -35,10 +35,20 @@ class VersusController extends Controller
             return $this->error('Requête invalide');
         }
 
+        $filtersFormated = $filters['promotions'] . "|" . $filters['sexes'];
+
         $students = [];
 
+        // Clean old votes
+        $oldVotes = Vote::where('uid', $request->input('uid'))->where('vote', null)->where('filters', '!=', $filtersFormated)->get();
+
+        foreach ($oldVotes as $oldVote)
+        {
+            $oldVote->delete();
+        }
+
         // Check if last vote is done
-        $lastVote = Vote::where('uid', $request->input('uid'))->where('vote', null)->first();
+        $lastVote = Vote::where('uid', $request->input('uid'))->where('vote', null)->where('filters', $filtersFormated)->first();
 
         if ($lastVote)
         {
@@ -55,8 +65,6 @@ class VersusController extends Controller
                 ]
             ]);
         }
-
-        $filtersFormated = $filters['promotions'] . "|" . $filters['sexes'];
 
         // No vote ready, create new one
         if ($this->picker($students, $filtersFormated))
@@ -139,17 +147,17 @@ class VersusController extends Controller
             $student1 = Student::whereIn('promotion', $promotions)->whereIn('sex', $sexes)->inRandomOrder()->first();
             $student2 = Student::whereIn('promotion', $promotions)->whereIn('sex', $sexes)->inRandomOrder()->first();
 
-            if ($student1->id > $student2->id)
-            {
-                // Swap
-                $studentT = $student1;
-                $student1 = $student2;
-                $student2 = $studentT;
-            }
-
             // Check if pair is OK
             if ($this->check($student1, $student2))
             {
+                if ($student1->id > $student2->id)
+                {
+                    // Swap
+                    $studentT = $student1;
+                    $student1 = $student2;
+                    $student2 = $studentT;
+                }
+
                 $found = true;
                 $students = [$student1, $student2];
                 break;
