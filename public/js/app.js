@@ -5,6 +5,8 @@ $( document ).ready(function() {
         data: {
             uid: null,
             vid: null,
+            loader: true,
+            filtersPanel: false,
             students: [null, null],
             promotions: [
                 ['Infosup', 'Ingésup B1', 'Ingésup B2', 'Ingésup B3', 'Ingésup M1', 'Ingésup M2'],
@@ -20,12 +22,15 @@ $( document ).ready(function() {
             loadStudents: function() {
                 var self = this;
 
+                self.loader = true;
+
                 var filters = self.getFilters();
 
                 $.post(studentsUrl, {uid: self.uid, filters: filters}, function(res) {
                     if (res.success) {
                         self.students = res.data.students;
                         self.vid = res.data.voteId;
+                        self.loader = false;
                     }
                     // TODO: handle error
                 });
@@ -42,7 +47,16 @@ $( document ).ready(function() {
                     });
                 }
             },
-            reload: function(id) {
+            filters: function() {
+                if (this.filtersPanel) {
+                    $('.filters .panel-body').fadeOut();
+                    $('.filters .panel-heading button').html('Afficher');
+                } else {
+                    $('.filters .panel-body').fadeIn();
+                    $('.filters .panel-heading button').html('Masquer');
+                }
+
+                this.filtersPanel = !this.filtersPanel;
             },
             getFilters: function() {
                 var self = this;

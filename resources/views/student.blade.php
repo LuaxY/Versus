@@ -7,5 +7,5 @@
         <i :class="'fa fa-' + (students[<?php echo $id ?>].sex == 'M' ? 'mars' : 'venus')" aria-hidden="true"></i>
         <a :href="'https://facebook.com/' + students[<?php echo $id ?>].fbId" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
     </h4>
-    <button @click="vote({{ $id }})" type="button" class="btn btn-primary choose">VOTER</button>
+    <button @click="vote({{ $id }})" type="button" class="btn btn-primary btn-block choose">VOTER</button>
 </div>
