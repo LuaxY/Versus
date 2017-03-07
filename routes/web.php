@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'VersusController@index')->name('home');
+Route::get('/classement', 'VersusController@ladder')->name('ladder');

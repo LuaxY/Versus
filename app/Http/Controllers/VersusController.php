@@ -14,6 +14,13 @@ class VersusController extends Controller
         return view('versus');
     }
 
+    public function ladder()
+    {
+        $students = Student::all();
+
+        return view('ladder', ['students' => $students]);
+    }
+
     public function students(Request $request)
     {
         if (!$request->input('uid') || !$request->input('filters'))

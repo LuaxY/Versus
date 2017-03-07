@@ -112,6 +112,15 @@ body {
     display: none;
 }
 
+.header a, .header h3 {
+    display: inline-block;
+}
+
+.header a {
+    float: right;
+    margin: 25px 0;
+}
+
 /* --------------- */
 /* Animation Image */
 /* --------------- */

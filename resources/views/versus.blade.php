@@ -36,7 +36,8 @@
         <div id="app" class="container">
 
             <div class="header clearfix">
-                <h3 class="text-muted"><img src="{{ URL::asset('imgs/header.png') }}" alt="Logo" class="" width="50"/> Versus</h3>
+                <h3><img src="{{ URL::asset('imgs/header.png') }}" alt="Logo" class="" width="50"/> Versus</h3>
+                <a href="{{ route('ladder') }}" class="btn btn-default"><i class="fa fa-list" aria-hidden="true"></i> Classement</a>
             </div>
 
             <div class="jumbotron vote">
