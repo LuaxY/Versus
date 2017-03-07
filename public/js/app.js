@@ -82,6 +82,9 @@ $( document ).ready(function() {
                 });
 
                 return {promotions: promotions, sexes: sexes};
+            },
+            format: function(str) {
+                return str.replace(' ', "<br>");
             }
         },
         computed: {
