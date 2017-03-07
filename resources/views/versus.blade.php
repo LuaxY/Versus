@@ -6,6 +6,7 @@
         <meta name="robots" content="noindex" />
         <meta name="robots" content="noarchive" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="shortcut icon" href="{{ URL::asset('imgs/vs.png') }}">
 
         <!-- jQuery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -33,11 +34,11 @@
             </div>
             <div class="jumbotron vote">
                 <div class="row">
-                    @include('studentVUEJS', ['id' => 0, 'student' => $students[0]])
+                    @include('student', ['id' => 0])
                     <div class="col-xs-6 col-xs-pull-3 col-sm-4 col-md-4 absolute">
                         <img src="{{ URL::asset('imgs/vs.png') }}" alt="Versus" class="vs"/>
                     </div>
-                    @include('studentVUEJS', ['id' => 1, 'student' => $students[1]])
+                    @include('student', ['id' => 1])
                 </div>
             </div>
             <div class="jumbotron filters">
@@ -67,7 +68,6 @@
             </footer>
         </div>
         <script type="text/javascript">
-            var voteId  = {{ $voteId }};
             var studentsUrl = '{{ route('students') }}';
             var voteUrl = '{{ route('vote') }}';
         </script>

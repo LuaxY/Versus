@@ -3,7 +3,6 @@ $( document ).ready(function() {
     var app = new Vue({
         el: '#app',
         data: {
-            ready: false,
             uid: null,
             vid: null,
             students: [null, null],
@@ -26,7 +25,7 @@ $( document ).ready(function() {
                 $.post(studentsUrl, {uid: self.uid, filters: filters}, function(res) {
                     if (res.success) {
                         self.students = res.data.students;
-                        self.ready = true;
+                        self.vid = res.data.voteId;
                     }
                     // TODO: handle error
                 });
@@ -35,12 +34,10 @@ $( document ).ready(function() {
                 var self = this;
 
                 if (self.uid != null && self.vid != null) {
-
-                    // TODO: filters are sent to vote request and not vote answser
-                    // TODO: replace id by this.students[id].id
-
                     $.post(voteUrl, {uid: self.uid, vid: self.vid, vote: id}, function(res) {
-                        console.log(res);
+                        if (res.success) {
+                            app.loadStudents();
+                        }
                         // TODO: handle error
                     });
                 }
@@ -119,7 +116,5 @@ $( document ).ready(function() {
         app.uid = result;
         app.loadStudents();
     });
-
-    app.vid = voteId;
 
 });
