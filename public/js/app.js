@@ -3,8 +3,9 @@ $( document ).ready(function() {
     var app = new Vue({
         el: '#app',
         data: {
-            uid: false,
-            vid: false,
+            ready: false,
+            uid: null,
+            vid: null,
             students: [null, null],
             promotions: [
                 ['Infosup', 'Ingésup B1', 'Ingésup B2', 'Ingésup B3', 'Ingésup M1', 'Ingésup M2'],
@@ -17,13 +18,32 @@ $( document ).ready(function() {
             selectedSex: [],
         },
         methods: {
-            vote: function(id) {
+            loadStudents: function() {
                 var self = this;
-                // TODO: vote for this.students[id]
-                // use this.uid and this.vid
 
                 var filters = self.getFilters();
-                console.log(filters);
+
+                $.post(studentsUrl, {uid: self.uid, filters: filters}, function(res) {
+                    if (res.success) {
+                        self.students = res.data.students;
+                        self.ready = true;
+                    }
+                    // TODO: handle error
+                });
+            },
+            vote: function(id) {
+                var self = this;
+
+                if (self.uid != null && self.vid != null) {
+
+                    // TODO: filters are sent to vote request and not vote answser
+                    // TODO: replace id by this.students[id].id
+
+                    $.post(voteUrl, {uid: self.uid, vid: self.vid, vote: id}, function(res) {
+                        console.log(res);
+                        // TODO: handle error
+                    });
+                }
             },
             reload: function(id) {
             },
@@ -97,6 +117,7 @@ $( document ).ready(function() {
 
     new Fingerprint2().get(function(result, components){
         app.uid = result;
+        app.loadStudents();
     });
 
     app.vid = voteId;

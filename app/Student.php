@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
+    protected $hidden = ['id', 'score'];
+
     public static function picker(&$students)
     {
         $try = 0;

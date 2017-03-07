@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
         <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.1.1.slim.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
         <!-- VueJS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.1/vue.min.js"></script>
@@ -33,11 +33,11 @@
             </div>
             <div class="jumbotron vote">
                 <div class="row">
-                    @include('student', ['id' => 0, 'student' => $students[0]])
+                    @include('studentVUEJS', ['id' => 0, 'student' => $students[0]])
                     <div class="col-xs-6 col-xs-pull-3 col-sm-4 col-md-4 absolute">
                         <img src="{{ URL::asset('imgs/vs.png') }}" alt="Versus" class="vs"/>
                     </div>
-                    @include('student', ['id' => 1, 'student' => $students[1]])
+                    @include('studentVUEJS', ['id' => 1, 'student' => $students[1]])
                 </div>
             </div>
             <div class="jumbotron filters">
@@ -67,7 +67,9 @@
             </footer>
         </div>
         <script type="text/javascript">
-            var voteId = {{ $voteId }};
+            var voteId  = {{ $voteId }};
+            var studentsUrl = '{{ route('students') }}';
+            var voteUrl = '{{ route('vote') }}';
         </script>
   </body>
 </html>
