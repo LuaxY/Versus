@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \Cache;
 use Validator;
 use App\Student;
 use App\Vote;
@@ -16,7 +17,9 @@ class VersusController extends Controller
 
     public function ladder()
     {
-        $students = Student::orderBy('score', 'DESC')->get();
+        $students = Cache::remember('ladder', 1, function () {
+            return Student::orderBy('score', 'DESC')->take(50)->get();
+        });
 
         return view('ladder', ['students' => $students]);
     }
