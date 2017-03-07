@@ -8,6 +8,7 @@
 
     <table class="table table-striped">
         <tr>
+            <th class="centered">Position</th>
             <th>Image</th>
             <th class="centered">Facebook</th>
             <th class="centered">Sexe</th>
@@ -15,8 +16,9 @@
             <th>Promo</th>
             <th class="centered">Score</th>
         </tr>
-        @foreach ($students as $student)
-            <tr>
+        @foreach ($students as $i => $student)
+            <tr class="@if ($i < 3) top-{{ $i+1 }} @endif">
+                <td class="centered">{{ $i+1 }}</td>
                 <td><img src="{{ URL::asset('imgs/students/' . $student->uid . '.jpg') }}" while="30" height="30"></td>
                 <td class="centered"><a href="https://facebook.com/{{ $student->fbId  }}" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></td>
                 <td class="centered"><i class="fa fa-{{ $student->sex == 'M' ? 'mars' : 'venus' }}" aria-hidden="true"></i></td>

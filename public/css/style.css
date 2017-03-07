@@ -129,6 +129,18 @@ body {
     text-align: center;
 }
 
+.top-1 {
+    background-color: #fee880;
+}
+
+.top-2 {
+    background-color: #d0d1d2 !important;
+}
+
+.top-3 {
+    background-color: #c6a875;
+}
+
 /* --------------- */
 /* Animation Image */
 /* --------------- */
