@@ -10,7 +10,7 @@ $( document ).ready(function() {
                 ['Infosup', 'Ingésup B1', 'Ingésup B2', 'Ingésup B3', 'Ingésup M1', 'Ingésup M2'],
                 ['ESSCA B1', 'ESSCA B2', 'ESSCA B3', 'ISEE M1', 'ISEE M2'],
                 ['MANAA', 'Limart B2', 'Limart B3'],
-                ['Anciens', 'Intervenants', 'Admin'],
+                [/*'Anciens', 'Intervenants', 'Admin'*/],
             ],
             sexes: ['Homme', 'Femme'],
             selectedPromotions: [],
@@ -18,11 +18,40 @@ $( document ).ready(function() {
         },
         methods: {
             vote: function(id) {
+                var self = this;
                 // TODO: vote for this.students[id]
                 // use this.uid and this.vid
+
+                var filters = self.getFilters();
+                console.log(filters);
             },
             reload: function(id) {
             },
+            getFilters: function() {
+                var self = this;
+                var promotions = "";
+                var sexes = "";
+
+                self.promotions.forEach(function (promotionsGroup) {
+                    promotionsGroup.forEach(function (promotion) {
+                        if (self.selectedPromotions.indexOf(promotion) >= 0) {
+                            promotions += "1";
+                        } else {
+                            promotions += "0";
+                        }
+                    });
+                });
+
+                self.sexes.forEach(function (sex) {
+                    if (self.selectedSex.indexOf(sex) >= 0) {
+                        sexes += "1";
+                    } else {
+                        sexes += "0";
+                    }
+                });
+
+                return {promotions: promotions, sexes: sexes};
+            }
         },
         computed: {
             selectAllPromotions: {
