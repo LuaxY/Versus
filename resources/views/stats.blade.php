@@ -25,11 +25,11 @@
         @foreach ($student->votes() as $vote)
             <tr>
                 <td class="centered @if ($vote['myScore'] > $vote['vsScore']) winner @elseif ($vote['myScore'] == $vote['vsScore']) equal @else looser @endif">{{ $vote['myScore'] }}</td>
-                <td class="centered @if ($vote['myScore'] > $vote['vsScore']) winner @elseif ($vote['myScore'] == $vote['vsScore']) equal @else looser @endif"><img src="{{ URL::asset('imgs/students/' . $student->uid . '.jpg') }}" while="30" height="30"></td>
+                <td class="centered @if ($vote['myScore'] > $vote['vsScore']) winner @elseif ($vote['myScore'] == $vote['vsScore']) equal @else looser @endif"><img src="{{ URL::asset('imgs/students/' . $student->uid . '.jpg') }}" width="30" height="30"></td>
                 <td class="left @if ($vote['myScore'] > $vote['vsScore']) winner @elseif ($vote['myScore'] == $vote['vsScore']) equal @else looser @endif">{{ $student->name }}</td>
                 <td class="centered"> VS </td>
                 <td class="right @if ($vote['myScore'] < $vote['vsScore']) winner @elseif ($vote['myScore'] == $vote['vsScore']) equal @else looser @endif">{{ $vote['versus']->name }}</td>
-                <td class="centered @if ($vote['myScore'] < $vote['vsScore']) winner @elseif ($vote['myScore'] == $vote['vsScore']) equal @else looser @endif"><img src="{{ URL::asset('imgs/students/' . $vote['versus']->uid . '.jpg') }}" while="30" height="30"></td>
+                <td class="centered @if ($vote['myScore'] < $vote['vsScore']) winner @elseif ($vote['myScore'] == $vote['vsScore']) equal @else looser @endif"><img src="{{ URL::asset('imgs/students/' . $vote['versus']->uid . '.jpg') }}" width="30" height="30"></td>
                 <td class="centered @if ($vote['myScore'] < $vote['vsScore']) winner @elseif ($vote['myScore'] == $vote['vsScore']) equal @else looser @endif">{{ $vote['vsScore'] }}</td>
             </tr>
         @endforeach
