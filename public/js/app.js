@@ -1,5 +1,7 @@
 $( document ).ready(function() {
 
+    var filtersTimeout = null;
+
     var app = new Vue({
         el: '#app',
         data: {
@@ -41,6 +43,17 @@ $( document ).ready(function() {
                         self.errorMsg = res.error;
                     }
                 });
+            },
+            reload: function() {
+                var self = this;
+
+                if (filtersTimeout) {
+                    window.clearTimeout(filtersTimeout);
+                }
+
+                filtersTimeout = window.setTimeout(function() {
+                    self.loadStudents();
+                }, 1000);
             },
             vote: function(id) {
                 var self = this;

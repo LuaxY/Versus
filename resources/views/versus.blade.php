@@ -30,20 +30,20 @@
         </div>
         <div class="panel-body">
             <h3>Sexes</h3>
-            <label><input type="checkbox" v-model="selectAllSexes" v-on:change="loadStudents"> Tout cocher</label>
+            <label><input type="checkbox" v-model="selectAllSexes" v-on:change="reload"> Tout cocher</label>
             <table class="table table-bordered table-striped">
                 <tr v-for="sex in sexes">
                     <td>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" v-model="selectedSex" :id="sex" :value="sex" v-on:change="loadStudents"> @{{ sex }}
+                                <input type="checkbox" v-model="selectedSex" :id="sex" :value="sex" v-on:change="reload"> @{{ sex }}
                             </label>
                         </div>
                     </td>
                 </tr>
             </table>
             <h3>Promotions</h3>
-            <label><input type="checkbox" v-model="selectAllPromotions" v-on:change="loadStudents"> Tout cocher</label>
+            <label><input type="checkbox" v-model="selectAllPromotions" v-on:change="reload"> Tout cocher</label>
             <div class="row">
                 <div class="col-xs-12 col-sm-4" v-for="promotionsGroup in promotions">
                     <table class="table table-bordered table-striped">
@@ -51,7 +51,7 @@
                             <td>
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" v-model="selectedPromotions" :id="promotion" :value="promotion" v-on:change="loadStudents"> @{{ promotion }}
+                                        <input type="checkbox" v-model="selectedPromotions" :id="promotion" :value="promotion" v-on:change="reload"> @{{ promotion }}
                                     </label>
                                 </div>
                             </td>
