@@ -141,6 +141,18 @@ body {
     background-color: #c6a875;
 }
 
+.winner {
+    background-color: #b5ffac !important;
+}
+
+.looser {
+    background-color: #ffacac !important;
+}
+
+.equal {
+    background-color: #ffdfb5 !important;
+}
+
 .ui.dimmer.error {
     background-color: rgba(180, 0, 0, 0.85);
 }
@@ -155,6 +167,14 @@ body {
     width: 0px;
     height: 0px;
     display: none;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
 }
 
 /* --------------- */

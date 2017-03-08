@@ -24,6 +24,19 @@ class VersusController extends Controller
         return view('ladder', ['students' => $students]);
     }
 
+    public function stats($studentId)
+    {
+        $student = Student::where('uid', $studentId)->first();
+
+        if ($student)
+        {
+            return view('stats', ['student' => $student]);
+        }
+
+        // TODO: error template
+        die("Etudiant invalide");
+    }
+
     public function students(Request $request)
     {
         if (!$request->input('uid') || !$request->input('filters'))

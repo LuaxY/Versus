@@ -13,3 +13,4 @@
 
 Route::get('/', 'VersusController@index')->name('home');
 Route::get('/classement', 'VersusController@ladder')->name('ladder');
+Route::get('/stats/{studentId}', 'VersusController@stats')->name('stats');
