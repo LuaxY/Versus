@@ -37,6 +37,11 @@ class VersusController extends Controller
         die("Etudiant invalide");
     }
 
+    public function allCheck()
+    {
+        return view('allCheck', ['students' => Student::all()]);
+    }
+
     public function students(Request $request)
     {
         if (!$request->input('uid') || !$request->input('filters'))
@@ -213,7 +218,7 @@ class VersusController extends Controller
             'Infosup', 'Ingésup B1', 'Ingésup B2', 'Ingésup B3', 'Ingésup M1', 'Ingésup M2',
             'ESSCA B1', 'ESSCA B2', 'ESSCA B3', 'ISEE M1', 'ISEE M2',
             'MANAA', 'Limart B2', 'Limart B3',
-            'Anciens',
+            'Ancien',
         ];
 
         $sexesList = ['M', 'F'];
