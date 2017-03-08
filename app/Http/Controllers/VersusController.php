@@ -18,7 +18,7 @@ class VersusController extends Controller
     public function ladder()
     {
         $students = Cache::remember('ladder', 1, function () {
-            return Student::orderBy('score', 'DESC')->take(50)->get();
+            return Student::orderBy('scoreAll', 'DESC')->take(50)->get();
         });
 
         return view('ladder', ['students' => $students]);

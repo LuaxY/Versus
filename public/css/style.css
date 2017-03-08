@@ -177,6 +177,10 @@ body {
     text-align: right;
 }
 
+.header a{
+    margin-left: 5px;
+}
+
 /* --------------- */
 /* Animation Image */
 /* --------------- */
