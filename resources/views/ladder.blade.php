@@ -21,7 +21,7 @@
         @foreach ($students as $i => $student)
             <tr class="@if ($i < 3) top-{{ $i+1 }} @endif">
                 <td class="centered">{{ $i+1 }}</td>
-                <td><img src="{{ URL::asset('imgs/students/' . $student->uid . '.jpg') }}" while="30" height="30"></td>
+                <td><img src="{{ URL::asset('imgs/students/' . $student->uid . '.jpg') }}" width="30" height="30"></td>
                 <td class="centered"><i class="fa fa-{{ $student->sex == 'M' ? 'mars' : 'venus' }}" aria-hidden="true"></i></td>
                 <td>{{ $student->name }}</td>
                 <td>{{ $student->promotion }}</td>
