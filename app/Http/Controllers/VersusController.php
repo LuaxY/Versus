@@ -35,7 +35,7 @@ class VersusController extends Controller
 
         if (!isset($filters['promotions']) || !isset($filters['sexes']))
         {
-            return $this->error('Requête invalide');
+            return $this->error('Requête invalide, actualisez la page. (#1)');
         }
 
         $filtersFormated = $filters['promotions'] . "|" . $filters['sexes'];
@@ -88,7 +88,7 @@ class VersusController extends Controller
             ]);
         }
 
-        return $this->error('Aucuns étudiants trouvé');
+        return $this->error('Aucuns étudiants trouvé, changez de filtres ;)');
     }
 
     public function vote(Request $request)
@@ -101,14 +101,14 @@ class VersusController extends Controller
 
         if ($validator->fails())
         {
-            return $this->error('Requête invalide');
+            return $this->error('Requête invalide, actualisez la page. (#2)');
         }
 
         $vote = Vote::where('uid', $request->input('uid'))->where('id', $request->input('vid'))->first();
 
         if (!$vote)
         {
-            return $this->error('Vote invalide');
+            return $this->error('Vote invalide, actualisez la page. (#3)');
         }
 
         $vote->vote = $request->input('vote');
@@ -124,10 +124,15 @@ class VersusController extends Controller
 
         if (!$winner)
         {
-            return $this->error('Etudiant invalide');
+            return $this->error('Vote invalide, actualisez la page. (#4)');
         }
 
-        $winner->score += 1;
+        if ($vote->fitlers == "11111111111111|11")
+        {
+            $winner->score += 1;
+        }
+
+        $winner->scoreAll += 1;
 
         $vote->save();
         $winner->save();

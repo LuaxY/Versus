@@ -18,6 +18,9 @@
         <div :class="'ui dimmer ' + (loader ? 'active' : '')">
             <div class="ui text loader">Vote en cours...</div>
         </div>
+        <div :class="'ui dimmer error ' + (error ? 'active' : '')">
+            <div class="ui text loader">@{{ errorMsg }}</div>
+        </div>
     </div>
 
     <div class="panel panel-default filters">
@@ -27,7 +30,7 @@
         </div>
         <div class="panel-body">
             <h3>Sexes</h3>
-            <label><input type="checkbox" v-model="selectAllSexes"> Tout cocher</label>
+            <label><input type="checkbox" v-model="selectAllSexes" v-on:change="loadStudents"> Tout cocher</label>
             <table class="table table-bordered table-striped">
                 <tr v-for="sex in sexes">
                     <td>
@@ -40,7 +43,7 @@
                 </tr>
             </table>
             <h3>Promotions</h3>
-            <label><input type="checkbox" v-model="selectAllPromotions"> Tout cocher</label>
+            <label><input type="checkbox" v-model="selectAllPromotions" v-on:change="loadStudents"> Tout cocher</label>
             <div class="row">
                 <div class="col-xs-12 col-sm-4" v-for="promotionsGroup in promotions">
                     <table class="table table-bordered table-striped">

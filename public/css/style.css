@@ -141,6 +141,22 @@ body {
     background-color: #c6a875;
 }
 
+.ui.dimmer.error {
+    background-color: rgba(180, 0, 0, 0.85);
+}
+
+.ui.dimmer.error .loader:before {
+    width: 0px;
+    height: 0px;
+    display: none;
+}
+
+.ui.dimmer.error .loader:after {
+    width: 0px;
+    height: 0px;
+    display: none;
+}
+
 /* --------------- */
 /* Animation Image */
 /* --------------- */

@@ -17,12 +17,16 @@ $( document ).ready(function() {
             sexes: ['Homme', 'Femme'],
             selectedPromotions: [],
             selectedSex: [],
+            error: false,
+            errorMsg: "Erreur...",
         },
         methods: {
             loadStudents: function() {
                 var self = this;
 
                 self.loader = true;
+                self.error = false;
+                self.errorMsg = "Erreur...";
 
                 var filters = self.getFilters();
 
@@ -31,8 +35,11 @@ $( document ).ready(function() {
                         self.students = res.data.students;
                         self.vid = res.data.voteId;
                         self.loader = false;
+                    } else {
+                        self.loader = false;
+                        self.error = true;
+                        self.errorMsg = res.error;
                     }
-                    // TODO: handle error
                 });
             },
             vote: function(id) {
@@ -42,8 +49,11 @@ $( document ).ready(function() {
                     $.post(voteUrl, {uid: self.uid, vid: self.vid, vote: id}, function(res) {
                         if (res.success) {
                             app.loadStudents();
+                        } else {
+                            self.loader = false;
+                            self.error = true;
+                            self.errorMsg = res.error;
                         }
-                        // TODO: handle error
                     });
                 }
             },
@@ -104,7 +114,6 @@ $( document ).ready(function() {
                     }
 
                     this.selectedPromotions = selected;
-                    this.loadStudents();
                 }
             },
             selectAllSexes: {
@@ -121,7 +130,6 @@ $( document ).ready(function() {
                     }
 
                     this.selectedSex = selected;
-                    this.loadStudents();
                 }
             },
         },
