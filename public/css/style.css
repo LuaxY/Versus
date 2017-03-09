@@ -130,6 +130,7 @@ body {
 .header a.nomargin:hover {
     text-decoration: none;
     color: #000;
+    cursor: pointer;
 }
 
 .table td {
