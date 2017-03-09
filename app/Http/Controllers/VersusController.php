@@ -175,12 +175,9 @@ class VersusController extends Controller
         {
             list($promotions, $sexes) = $this->filters($filtersFormated);
 
-            $rand1 = rand(1, 489);
-            $rand2 = rand(1, 489);
-
             // Pick 2 random students
-            $student1 = Student::whereIn('promotion', $promotions)->whereIn('sex', $sexes)->where('id', $rand1)->first();
-            $student2 = Student::whereIn('promotion', $promotions)->whereIn('sex', $sexes)->where('id', $rand2)->first();
+            $student1 = Student::whereIn('promotion', $promotions)->whereIn('sex', $sexes)->inRandomOrder()->first();
+            $student2 = Student::whereIn('promotion', $promotions)->whereIn('sex', $sexes)->inRandomOrder()->first();
 
             // Check if pair is OK
             if ($this->check($student1, $student2))
