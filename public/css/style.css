@@ -122,6 +122,16 @@ body {
     margin: 25px 0;
 }
 
+.header a.nomargin {
+    margin: 0 0;
+    color: #000;
+}
+
+.header a.nomargin:hover {
+    text-decoration: none;
+    color: #000;
+}
+
 .table td {
     vertical-align: middle;
 }

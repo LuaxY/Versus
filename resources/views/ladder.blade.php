@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="header clearfix">
-        <h3><img src="{{ URL::asset('imgs/header.png') }}" alt="Logo" class="" width="50"/> Versus</h3>
+        <h3><a href="{{ route('home') }}" class="nomargin"><img src="{{ URL::asset('imgs/header.png') }}" alt="Logo" class="" width="50"/> Versus</a></h3>
         <a href="{{ route('home') }}" class="btn btn-default"><i class="fa fa-trophy" aria-hidden="true"></i> Voter</a>
     </div>
 

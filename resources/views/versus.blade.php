@@ -3,7 +3,7 @@
 @section('content')
 <div id="app" >
     <div class="header clearfix">
-        <h3><img src="{{ URL::asset('imgs/header.png') }}" alt="Logo" class="" width="50"/> Versus</h3>
+        <h3><a href="{{ route('home') }}" class="nomargin"><img src="{{ URL::asset('imgs/header.png') }}" alt="Logo" class="" width="50"/> Versus</a></h3>
         <a href="{{ route('ladder') }}" class="btn btn-default"><i class="fa fa-list" aria-hidden="true"></i> Classement</a>
     </div>
 
