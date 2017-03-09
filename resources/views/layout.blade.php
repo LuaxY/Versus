@@ -37,6 +37,10 @@
 
             @yield('content')
 
+            <footer class="footer">
+                <p><a href="mailto:zac.terna@protonmail.com">Contact</a></p>
+            </footer>
+
             <script type="text/javascript">
                 var studentsUrl = '{{ route('students') }}';
                 var voteUrl = '{{ route('vote') }}';
