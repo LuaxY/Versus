@@ -7,6 +7,8 @@
         <a href="{{ route('ladder') }}" class="btn btn-default"><i class="fa fa-list" aria-hidden="true"></i> Classement</a>
     </div>
 
+    <p>Utilisez la connexion de votre téléphone ;)</p>
+
     <div class="jumbotron vote">
         <div class="row">
             @include('student', ['id' => 0])
