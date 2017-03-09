@@ -64,7 +64,8 @@ body {
 }
 
 .jumbotron img {
-    max-width: 100%;
+    max-width: 40vw;
+    max-height: 40vw;
 }
 
 .jumbotron img.vs {
