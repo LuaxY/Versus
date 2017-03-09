@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <div class="panel panel-default filters">
+    <!--<div class="panel panel-default filters">
         <div class="panel-heading">
             Filtres
             <button @click="filters" class="btn btn-default pull-right">Afficher</button>
@@ -62,6 +62,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
 @stop

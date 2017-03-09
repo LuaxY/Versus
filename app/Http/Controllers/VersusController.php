@@ -56,7 +56,8 @@ class VersusController extends Controller
             return $this->error('Requête invalide, actualisez la page. (#1)');
         }
 
-        $filtersFormated = $filters['promotions'] . "|" . $filters['sexes'];
+        //$filtersFormated = $filters['promotions'] . "|" . $filters['sexes'];
+        $filtersFormated = "11111111111111|11";
 
         $students = [];
 
