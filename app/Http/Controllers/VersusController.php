@@ -180,7 +180,7 @@ class VersusController extends Controller
 
             // Pick 2 random students
             $student1 = Student::whereIn('promotion', $promotions)->whereIn('sex', $sexes)->where('id', $rand1)->first();
-            $student2 = Student::whereIn('promotion', $promotions)->whereIn('sex', $sexes)->inRandomOrder('id', $rand2)->first();
+            $student2 = Student::whereIn('promotion', $promotions)->whereIn('sex', $sexes)->where('id', $rand2)->first();
 
             // Check if pair is OK
             if ($this->check($student1, $student2))
