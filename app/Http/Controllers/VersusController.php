@@ -56,8 +56,7 @@ class VersusController extends Controller
             return $this->error('Requête invalide, actualisez la page. (#1)');
         }
 
-        //$filtersFormated = $filters['promotions'] . "|" . $filters['sexes'];
-        $filtersFormated = "11111111111111|11";
+        $filtersFormated = $filters['promotions'] . "|" . $filters['sexes'];
 
         $students = [];
 
@@ -125,7 +124,7 @@ class VersusController extends Controller
 
         $vote = Vote::where('uid', $request->input('uid'))->where('id', $request->input('vid'))->first();
 
-        if (!$vote)
+        if (!$vote || $vote->vote != null)
         {
             return $this->error('Vote invalide, actualisez la page. (#3)');
         }
