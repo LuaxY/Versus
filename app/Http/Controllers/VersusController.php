@@ -124,9 +124,14 @@ class VersusController extends Controller
 
         $vote = Vote::where('uid', $request->input('uid'))->where('id', $request->input('vid'))->first();
 
-        if (!$vote || $vote->vote != null)
+        if (!$vote)
         {
             return $this->error('Vote invalide, actualisez la page. (#3)');
+        }
+
+        if ($vote->vote != null && ($vote->vote == 0 || $vote->vote == 1))
+        {
+            return $this->error('Vote invalide, actualisez la page. (#5)');
         }
 
         $vote->vote = $request->input('vote');
