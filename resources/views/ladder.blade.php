@@ -6,7 +6,7 @@
         <a href="{{ route('home') }}" class="btn btn-default"><i class="fa fa-trophy" aria-hidden="true"></i> Voter</a>
     </div>
 
-    <h3>Top 50</h3>
+    <h3>Top 100</h3>
 
     <table class="table table-striped">
         <tr>
