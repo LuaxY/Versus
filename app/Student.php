@@ -22,6 +22,11 @@ class Student extends Model
                 $winner = $vote->winner();
                 $looser = $vote->looser();
 
+                if (!$winner || !$looser)
+                {
+                    continue;
+                }
+
                 $versus = null;
                 $win = false;
 
