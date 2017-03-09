@@ -125,7 +125,7 @@ class VersusController extends Controller
 
         $vote = Vote::where('uid', $request->input('uid'))->where('id', $request->input('vid'))->first();
 
-        if (!$vote || $vote->vote == null)
+        if (!$vote)
         {
             return $this->error('Vote invalide, actualisez la page. (#3)');
         }
@@ -146,7 +146,7 @@ class VersusController extends Controller
             return $this->error('Vote invalide, actualisez la page. (#4)');
         }
 
-        if ($vote->fitlers == "11111110111111|11")
+        if ($vote->fitlers == "11111111111111|11")
         {
             $winner->score += 1;
         }
