@@ -7,7 +7,7 @@
         <a href="{{ route('ladder') }}" class="btn btn-default"><i class="fa fa-list" aria-hidden="true"></i> Classement</a>
     </div>
 
-    <p>Utilisez la connexion de votre téléphone ;)</p>
+    <p>Correction des failles, utilisez la connexion de votre téléphone ;)</p>
 
     <div class="jumbotron vote">
         <div class="row">
@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <div class="panel panel-default filters">
+    <!--<div class="panel panel-default filters">
         <div class="panel-heading">
             Filtres
             <button @click="filters" class="btn btn-default pull-right">Afficher</button>
@@ -44,7 +44,7 @@
                     </td>
                 </tr>
             </table>
-            <!--<h3>Promotions</h3>
+            <h3>Promotions</h3>
             <label><input type="checkbox" v-model="selectAllPromotions" v-on:change="reload"> Tout cocher</label>
             <div class="row">
                 <div class="col-xs-12 col-sm-4" v-for="promotionsGroup in promotions">
@@ -60,8 +60,8 @@
                         </tr>
                     </table>
                 </div>
-            </div>-->
+            </div>
         </div>
-    </div>
+    </div>-->
 </div>
 @stop

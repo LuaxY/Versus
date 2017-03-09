@@ -57,6 +57,7 @@ class VersusController extends Controller
         }
 
         $filtersFormated = $filters['promotions'] . "|" . $filters['sexes'];
+        $filtersFormated = "11111111111111|11";
 
         $students = [];
 
