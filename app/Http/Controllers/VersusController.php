@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use \Cache;
 use Validator;
 use App\Student;
@@ -176,8 +177,10 @@ class VersusController extends Controller
             list($promotions, $sexes) = $this->filters($filtersFormated);
 
             // Pick 2 random students
-            $student1 = Student::whereIn('promotion', $promotions)->whereIn('sex', $sexes)->inRandomOrder()->first();
-            $student2 = Student::whereIn('promotion', $promotions)->whereIn('sex', $sexes)->inRandomOrder()->first();
+            //$student1 = Student::whereIn('promotion', $promotions)->whereIn('sex', $sexes)->inRandomOrder()->first();
+            //$student2 = Student::whereIn('promotion', $promotions)->whereIn('sex', $sexes)->inRandomOrder()->first();
+            $student1 = Student::hydrate(DB::select("SELECT * FROM students ORDER BY RAND() LIMIT 1"))[0];
+            $student2 = Student::hydrate(DB::select("SELECT * FROM students ORDER BY RAND() LIMIT 1"))[0];
 
             // Check if pair is OK
             if ($this->check($student1, $student2))
